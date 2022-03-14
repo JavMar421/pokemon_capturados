@@ -85,6 +85,9 @@
                </BorderPane.margin>
             </Label>
          </right>
+         <center>
+            <Label fx:id="pokeball" onMouseClicked="#pokeballCliked" text="POKEBALL" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
       <BorderPane fx:id="ataqueMenu" layoutX="20.0" layoutY="260.0" prefHeight="70.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1;" visible="false">
          <left>

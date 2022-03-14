@@ -61,6 +61,8 @@ class PokemonSeleccionadoController() {
     private lateinit var imagenMuerto: ImageView
     @FXML
     private lateinit var continuarMuerto: Button
+    @FXML
+    private lateinit var pokeball: Label
 
 
 
@@ -324,6 +326,49 @@ class PokemonSeleccionadoController() {
         }
         if(!pokeselec.isAliveSelect())
             alertaSelec(pokeselec)
+    }
+    @FXML
+    fun pokeballCliked(){
+        enemigo.intentos++
+        println("intentos: "+enemigo.intentos)
+        var r = Random.nextInt(4)
+            println(r)
+        if (r==0){
+            println("el pokemon se capturo")
+            enemigo.capturado=true
+            alertaCaptura(enemigo)
+            var capturado=PokemonCapturado(enemigo.nombre,pokeselec.nombre,enemigo.intentos,pokeselec.vidaMax-pokeselec.vidaRest,enemigo.image)
+            listaCapturados.add(capturado)
+            seleccionDePokemonController.actualizarEstado(pokeselec)
+        }
+        else {
+            r = Random.nextInt(1)
+            if (r==1){pokeselec.recibirAtack(3)
+            println("no se capturo y ataco muy arriesgado")
+            }
+            else {pokeselec.recibirAtack(1)
+                println("no se capturo y ataco seguro")
+            }
+            seleccionDePokemonController.actualizarEstado(pokeselec)
+            cargarPokemon(pokeselec)
+            }
+        if(!pokeselec.isAliveSelect())
+            alertaSelec(pokeselec)
+
+    }
+    fun alertaCaptura(pokemon: PokeEnemy){
+        val alert = Alert(Alert.AlertType.CONFIRMATION)
+        alert.headerText = null
+        alert.title = "POKEMON CAPTURADO"
+        alert.contentText = pokemon.nombre + " HA SIDO CAPTURADO"
+        val pokeMuerto=File(pokemon.image)
+        alert.graphic = ImageView(Image(pokeMuerto.toURI().toString()))
+        val action = alert.showAndWait()
+        if (action.get() == ButtonType.OK) {
+            continuar()
+        } else {
+            salir()
+        }
     }
 
     @FXML

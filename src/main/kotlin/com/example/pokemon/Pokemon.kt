@@ -46,7 +46,7 @@ data class Pokemon(val nombre:String,val image:String,val vidaMax:Int,var nivel:
             vidaRest+=curarAliado
     }
 }
-data class PokeEnemy(val nombre: String,val image: String,val nivel: Int,val vidaMax: Int,var vidaRest: Int=vidaMax){
+data class PokeEnemy(val nombre: String,val image: String,val nivel: Int,val vidaMax: Int,var vidaRest: Int=vidaMax, var capturado: Boolean=false, var intentos: Int=0){
     fun isAliveEnemy():Boolean{
         var vivo=true
 
@@ -87,3 +87,4 @@ data class PokeEnemy(val nombre: String,val image: String,val nivel: Int,val vid
             vidaRest+=curarEnemigo
     }
 }
+data class PokemonCapturado (val nombreCap:String,val nombrePelea:String,val intentos: Int,val vida:Int,val image: String)

@@ -402,6 +402,9 @@
                 </VBox>
             </children>
         </GridPane>
+      <Label fx:id="caja" layoutX="219.0" layoutY="370.0" onMouseClicked="#cajaCliked" text="Caja" textFill="WHITE" />
+      <Label layoutX="393.0" layoutY="370.0" text="Contador" textFill="WHITE" />
+      <Label fx:id="capturasTotal" layoutX="456.0" layoutY="370.0" text="0" textFill="WHITE" />
     </children>
     <padding>
         <Insets right="-10.0" top="10.0" />

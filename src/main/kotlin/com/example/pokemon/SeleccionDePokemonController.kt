@@ -13,6 +13,7 @@ import javafx.scene.paint.Color
 import javafx.stage.Stage
 import java.io.File
 import java.io.IOException
+var  listaCapturados = mutableListOf<PokemonCapturado>()
 
 class SeleccionDePokemonController {
 
@@ -186,6 +187,10 @@ class SeleccionDePokemonController {
     @FXML
     private lateinit var ps21: Label
 
+    @FXML
+    private lateinit var caja: Label
+    @FXML
+    private lateinit var capturasTotal: Label
     //Continuar
     @FXML
     private lateinit var continuar:Label
@@ -194,6 +199,7 @@ class SeleccionDePokemonController {
     //pokemons
     class InterfazPokemon(var nombre: Label,var nivel: Label,var ps: Label,var imagenPokemon: ImageView,var imagenGenero : ImageView,var vida : ProgressBar,var border: BorderPane,var pokemon: Pokemon)
     var listInterfaces = mutableListOf<InterfazPokemon>()
+
 
     @FXML
     fun initialize(){
@@ -333,7 +339,7 @@ class SeleccionDePokemonController {
 
     @FXML
     fun continuarClicked(){
-
+        stage=null
         try {
             if(stage==null) {
 
@@ -382,6 +388,43 @@ class SeleccionDePokemonController {
             }
             }
         }
+        capturasTotal.text= listaCapturados.size.toString()
     }
+    @FXML
+    fun cajaCliked(){
+        stage=null
+        try {
+            if(stage==null) {
+
+                var pokeSelection:PokemonSeleccionadoController
+                stage = Stage()
+                stage?.isResizable = false
+                val loader = FXMLLoader(HelloApplication::class.java.getResource("caja_capturados.fxml"))
+                val scene = Scene(loader.load(), 600.0, 350.0)
+                stage?.title = "Caja"
+                stage?.scene = scene
+                stage?.show()
+
+                val controller = loader.getController<CajaController>()
+                /*var select: Pokemon
+
+                arraypoke.forEachIndexed { index, pokemon ->
+
+                    if (pokemon.click) {
+                        println(arraypoke[index].nombre+" seleccionado")
+                        select = arraypoke[index]
+                        controller.cargarPokemonMochila(select)
+                        controller.enviarDatosMochila2(this)
+
+                    }
+                }*/
+                continuar.disableProperty().set(true)
+            }
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+    }
+
+
 
 }

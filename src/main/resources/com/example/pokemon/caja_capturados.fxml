@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pokemon.CajaController">
+   <children>
+      <Label fx:id="nombrePokemon" layoutX="10.0" layoutY="20.0" text="Label" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <ImageView fx:id="imagenPokemon" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="siguientePokemon" layoutX="445.0" layoutY="278.0" onMouseClicked="#siguienteCliked" text="Siguiente">
+         <padding>
+            <Insets bottom="20.0" right="20.0" />
+         </padding></Label>
+   </children>
+</AnchorPane>
